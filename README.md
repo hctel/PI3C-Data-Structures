@@ -130,7 +130,7 @@ On a les trois pointeurs suivants :  <code>*head</code>,  <code>*tail</code>  et
 <ul>
 <li><strong>Problème :</strong>  Lorsqu’on manipule l’arbre en y insérant/supprimant des éléments on peut introduire un déséquilibre dû au nombre de noeuds différent à gauche et à droite d’un parent.<br>
 <img src="https://i.ibb.co/VDpmv1D/D-s-quilibre.png" alt="enter image description here"></li>
-<li><strong>Solutions :</strong>  Il existe différentes méthodes d’équilibrage à base de rotation comme les arbres  <a href="https://github.com/smarbal/PI3C-Data-Structures#11-avl-trees">AVL</a></li>
+<li><strong>Solutions :</strong>  Il existe différentes méthodes d’équilibrage à base de rotation comme les arbres  <a href="#11-avl-trees">AVL</a></li>
 </ul>
 <h1 id="avl-trees">11. AVL Trees</h1>
 <p><strong>Principe :</strong> c’est un algorithme qui permet de rendre un arbre équilibré en associant aux différents noeuds des niveaux de désiquilibrede l’arbre. <code>+n</code> et <code>-n</code> lors d’un déséquilibre à droite ou à gauche et <code>0</code> lorsque le noeud est équilibré. À partir d’un déséquilibre de <code>+2</code>ou <code>-2</code>, l’arbre va effectuer une rotation classique afin de rééquilibrer.</p>
