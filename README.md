@@ -7,6 +7,7 @@
 <ul>
 <li>Nikola Mitrovic</li>
 <li>Sébastien Martinez</li>
+<li>Hugo de Hepcée</li>
 </ul>
 <h1 id="selection-and-insertion-sorts">1. Selection and Insertion Sorts</h1>
 <h2 id="selection">1.1 Selection</h2>
@@ -173,6 +174,19 @@ L’implémentation peut se faire avec une liste chaînée ordonnée ou non ou u
 <p>Le cas le plus simple est l’utilisation d’un bit de parité. On ajoute pour chaque bloc de n bits un bit qui est la somme (sans report) des bits du bloc (1+1=0). Ce système permet de détecter si un  <code>nombre impair</code>  de bit est  <code>incorrect</code>  dans le bloc. En cas de nombre pair d’erreurs, le bit de parité sera correct. Ce système consiste donc à ajouter au bloc de bits à transmettre le modulo 2 (0 ou 1) de ce bloc.</p>
 <p><strong>Améliorer le nombre de détections :</strong>  Si l’on consacre 2 bits à la détection d’erreur, on peut utiliser un modulo 4 (0, 1, 2 ou 3 càd en binaire 00, 01, 10 ou 11). Si au décodage, le modulo 4 est correct, cela signifie qu’il y a 0, 4, 8… erreurs de transmission. Le 0 étant le plus probable surtout si le bloc transmis est de petite taille.</p>
 <p><strong>En cas de détection :</strong>  On peut constater que cette technique permet de détecter des erreurs, mais pas de les corriger. Si le code détecteur est assez développé il peut corriger l’erreur comme le  <code>codage de Hamming</code>. Autrement une solution plus simple consiste à demander de renvoyer le message.</p>
+<h1 id="raid-arrays">15. RAID</h1>
+<p>Le principe du RAID (<i>Redundant Array of Independant Disks</i>) est de grouper plusieurs disques durs physiques pour qu'ils soient traités comme un seul.</p>
+<p>On distingue 7 types de RAID différents, numérotés de RAID 0 à RAID 6.</p>
+<ul>
+  <li>RAID 0 : Utilise au moins deux disques. Il permet d'augmenter la capacité et les vitesses de transfert en répartissant l'information sur les disques. Ce RAID ne permet pas de redondance, il suffit qu'un seul disque tombe en panne pour perdre l'entièreté des données.</li>
+  <li>RAID 1 : Clone l'information sur ses disques, ne permet pas de gain de performance mais permet la redondance (pour n disques, on a droit jusqu'à n-1 disques défectueux).</li>
+  <li>RAID 2 : N'est plus utilisé aujourd'hui, il reprenait le principe du RAID 0 en ajoutant un disque dur contenant des codes de contrôle d'erreur calculés par Hamming.</li>
+  <li>RAID 3 & 4 : Semblables au RAID2, ils utilisent un disque pour vérifier la parité des données. La différence entre les deux est respectivement la découpe des données en octets, ou en blocs.</li>
+  <li>RAID 5 : Se base aussi sur un disque de parité. La différence avec le RAID 3/4 est la capacité à reconstruire le contenu d'un disque en panne.</li>
+  <li>RAID 6 : Évolution du RAID 5 utilisant plus d'un disque de redondance. Cependant, les calculs des informations de redondance étant plus compliqués, on se limite en général à 2 disques de parité.</li>
+</ul>
+<p>On peut très bien imbriquer un RAID dans un autre. Par exemple, un RAID 0+1 sera un RAID 1 de deux volumes en RAID 0.</p>
+<p>La gestion d'un RAID peut soit être effectuée logiciellement (l'OS se chagre des calculs et du transfert des données), pseudo-matériellement (contrôleur de stockage avec des fonctionnalités avancées) ou matériellement (composant dédié aux calculs et aux transferts).</p>
 <h1 id="bibliography">Bibliography</h1>
 <p>A. LORGE, <em>3BE Structures de données</em>, 2021<br>
 A. LORGE, <a href="https://teams.microsoft.com/_#/school/files/General?threadId=19%3Adad3058aa849416991b553df80365ed6%40thread.tacv2&amp;ctx=channel&amp;context=Recordings&amp;rootfolder=%252Fsites%252F3BEPG3L-L1Projetcopier%252FDocuments%2520partages%252FGeneral%252FRecordings">Teams-Recordings</a>, 2021</p>
